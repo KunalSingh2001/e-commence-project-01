@@ -1,9 +1,15 @@
+import React, {useState} from 'react';
 import "./App.css";
 import Header from "./components/elements/Header";
 import Footer from "./components/elements/Footer";
 import Heading from "./components/Heading";
 import Store from "./components/Store";
+import Modal from './components/Portal/Modal';
+import Cart from './components/Cart';
 function App() {
+    const {showCart, setShowCart} = useState(true);
+
+
     const productsArr = [
         {
             title: "Colors",
@@ -31,14 +37,17 @@ function App() {
         },
     ];
 
-    return (
-        <>
-            <Header />
-            <Heading />
-            <Store products={productsArr} />
-            <Footer />
-        </>
-    );
+   return (
+    <>
+      <Header />
+      <Heading />
+      <Store products={productsArr} />
+        <Modal>
+          <Cart />
+        </Modal>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
