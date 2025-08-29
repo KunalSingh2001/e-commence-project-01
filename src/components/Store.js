@@ -5,7 +5,10 @@ function Store(props) {
         <div className="container">
             <div className="row">
                 {props.products.map((item) => (
-                    <div className="col-6 d-flex flex-column justify-content-center align-items-center mb-5">
+                    <div
+                        key={item.id}
+                        className="col-6 d-flex flex-column justify-content-center align-items-center mb-5"
+                    >
                         <span className="image-title fs-3 mb-3">
                             {item.title}
                         </span>
@@ -30,6 +33,7 @@ function Store(props) {
                 <button
                     className="btn btn-secondary"
                     style={{ color: "skyblue", fontWeight: "bold" }}
+                    onClick={props.handleHideShowCart}
                 >
                     <b>See the cart</b>
                 </button>

@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../Portal/Modal.css";
 
-const Modal = ({ children }) => {
+const Modal = ({ children, onClose }) => {
     return ReactDOM.createPortal(
-        <div className="modal-backdrop">
-            <div className="modal">
-                {children}
-            </div>
+        <div className="custom-modal-backdrop">
+            <button className="close-btn" onClick={onClose}>
+                ✖
+            </button>
+            <div className="custom-modal">{children}</div>
         </div>,
         document.getElementById("portal-root")
     );

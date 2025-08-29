@@ -1,12 +1,17 @@
 table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white; /* ensure visibility inside dark modal */
-  color: black;      /* force text color */
+    width: 100%;
+    border-collapse: separate;
+    text-align: center;
+    border-spacing: 0 20px;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
+table th,
+table td {
+    border-bottom: 1px solid black;
+    padding: 20px 20px;
+}
+
+.cart-image {
+    height: 50px;
+    width: 50px;
 }

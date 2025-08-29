@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-function Header() {
+function Header(props) {
     return (
         <div className="bg-dark text-white d-flex align-items-center py-1 px-4 border-bottom border-2 border-white position-static position-fixed top-1 start-0 w-100">
             <div className="d-flex justify-content-center gap-5 flex-grow-1">
@@ -8,10 +8,13 @@ function Header() {
                 <span className="font-times">Store</span>
                 <span className="font-times">About</span>
             </div>
-            <span className="cart-button">
-                Cart
-                <span className="cart-count">3</span>
-            </span>
+            <button
+                type="button"
+                className="cart-button"
+                onClick={props.handleHideShowCart}
+            >
+                Cart <span className="cart-count">3</span>
+            </button>
         </div>
     );
 }

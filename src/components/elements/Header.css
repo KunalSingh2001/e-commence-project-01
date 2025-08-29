@@ -6,9 +6,11 @@
 .cart-button {
     font-size: 15px;
     font-weight: bold;
-    border: 3px solid skyblue;
+    border: 1px solid skyblue;
     border-radius: 20%;
     padding: 5px;
+    color: white;
+    background-color: black;
 }
 
 .cart-count {
