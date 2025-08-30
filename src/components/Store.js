@@ -1,6 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Store.css";
+import { CartItemContext } from "./Context/CartItemContext";
+
 function Store(props) {
+    const {setCartItems, cartItems} = useContext(CartItemContext);
+    function addToCart(id) {
+
+        let checkAlreadyExits = cartItems.find((item) => item.id === id);
+        if (checkAlreadyExits) {
+                setCartItems((prev) =>
+                     prev.map((item) => item.id === id? {...item, quantity: item.quantity + 1} : item))
+        }else {
+            let addedItem = props.products.find((item) => item.id === id);
+            setCartItems((prev) => [...prev, addedItem])
+        }
+    }
+
+
     return (
         <div className="container">
             <div className="row">
@@ -19,7 +35,7 @@ function Store(props) {
                         />
                         <div className="d-flex gap-5 mt-3">
                             <span className="mb-0">${item.price}</span>
-                            <button
+                            <button onClick={() => addToCart(item.id)}
                                 className="btn btn-info"
                                 style={{ color: "white" }}
                             >
