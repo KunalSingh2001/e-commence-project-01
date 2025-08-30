@@ -13,8 +13,9 @@ function Header(props) {
                 <Link to="/about" className="font-times">
                     About
                 </Link>
-
-                <span className="font-times">Store</span>
+                <Link to="/store" className="font-times">
+                    Store
+                </Link>
             </div>
             <button
                 type="button"

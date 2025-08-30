@@ -1,56 +1,35 @@
-import React, { useState, useContext } from "react";
+import React from 'react';
 import Header from "../elements/Header";
 import Footer from "../elements/Footer";
-import Heading from "../Heading";
-import Store from "../Store";
-import Modal from "../Portal/Modal";
-import Cart from "../Cart";
-import { CartItemContext } from "../Context/CartItemContext";
+import Heading from '../Heading';
+import "./Home.css"
 
 function Home() {
-    const { cartItems } = useContext(CartItemContext);
-    const [showCart, setShowCart] = useState(false);
-    const cartElements = [
-        {
-            id: 1,
-            title: "Colors",
-            price: 100,
-            imageUrl:
-                "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-            quantity: 2,
-        },
-
-        {
-            id: 2,
-            title: "Black and white Colors",
-            price: 50,
-            imageUrl:
-                "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-            quantity: 3,
-        },
-
-        {
-            id: 3,
-            title: "Yellow and Black Colors",
-            price: 70,
-            imageUrl:
-                "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-            quantity: 1,
-        },
+    const concerts = [
+        { date: "JUL 16", country: "DETROIT, MI", place: "DTE ENERGY MUSIC THEATRE" },
+        { date: "JUL 19", country: "TORONTO, ON", place: "BUDWEISER STAGE" },
+        { date: "JUL 22", country: "BRISTOW, VA", place: "JIGGY LUBE LIVE" },
+        { date: "JUL 29", country: "PHOENIX, AZ", place: "AK-CHIN PAVILION" },
+        { date: "AUG 2", country: "LAS VEGAS, NV", place: "T-MOBILE ARENA" },
+        { date: "AUG 7", country: "CONCORD, CA", place: "CONCORD PAVILION" }
     ];
-    function hideShowCart() {
-        setShowCart((prev) => !prev);
-    }
+
     return (
         <>
-            <Header handleHideShowCart={hideShowCart} />
+            <Header />
             <Heading />
-            <Store products={cartElements} handleHideShowCart={hideShowCart} />
-            {showCart && (
-                <Modal onClose={hideShowCart}>
-                    <Cart cartIems={cartItems} />
-                </Modal>
-            )}
+                <table>
+                    <tbody>
+                        {concerts.map((item) => (
+                            <tr>
+                                <td>{item.date}</td>
+                                <td>{item.country}</td>
+                                <td>{item.place}</td>
+                                <tb><button className='btn btn-info' style={{color:"white"}}>BUY TICKETS</button></tb>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             <Footer />
         </>
     );
