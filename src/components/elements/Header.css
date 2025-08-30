@@ -1,6 +1,8 @@
 .font-times {
     font-family: "Times New Roman", Times, serif;
     font-size: 23px;
+    color: white;
+    text-decoration: none;
 }
 
 .cart-button {

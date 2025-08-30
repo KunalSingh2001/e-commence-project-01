@@ -1,14 +1,20 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import { CartItemContext } from "../Context/CartItemContext";
 function Header(props) {
-    const {cartItems} = useContext(CartItemContext);
+    const { cartItems } = useContext(CartItemContext);
     return (
         <div className="bg-dark text-white d-flex align-items-center py-1 px-4 border-bottom border-2 border-white position-static position-fixed top-1 start-0 w-100">
             <div className="d-flex justify-content-center gap-5 flex-grow-1">
-                <span className="fw-bold font-times">Home</span>
+                <Link to="/" className="font-times">
+                    Home
+                </Link>
+                <Link to="/about" className="font-times">
+                    About
+                </Link>
+
                 <span className="font-times">Store</span>
-                <span className="font-times">About</span>
             </div>
             <button
                 type="button"

@@ -1,35 +1,22 @@
 import React, { useState, useContext } from "react";
 import "./App.css";
-import Header from "./components/elements/Header";
-import Footer from "./components/elements/Footer";
-import Heading from "./components/Heading";
-import Store from "./components/Store";
-import Modal from "./components/Portal/Modal";
-import Cart from "./components/Cart";
+import About from "./components/About";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CartItemContext } from "./components/Context/CartItemContext";
+import Home from "./components/Home/Home";
+
 function App() {
-    const { cartItems } = useContext(CartItemContext);
-    const [showCart, setShowCart] = useState(false);
-    
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Home />,
+        },
+        {
+            path: "/about",
+            element: <About />,
+        },
+    ]);
 
-    function hideShowCart() {
-        setShowCart((prev) => !prev);
-    }
-
-    return (
-        <>
-            <Header handleHideShowCart={hideShowCart} />
-            <Heading />
-            <Store products={cartsArr} handleHideShowCart={hideShowCart} />
-            {showCart && (
-                <Modal onClose={hideShowCart}>
-                    <Cart cartIems={cartItems} />
-                </Modal>
-            )}
-            <Footer />
-        </>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;
