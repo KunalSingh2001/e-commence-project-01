@@ -5,16 +5,19 @@ import { CartItemContext } from "../Context/CartItemContext";
 function Header(props) {
     const { cartItems } = useContext(CartItemContext);
     return (
-        <div className="bg-dark text-white d-flex align-items-center py-1 px-4 border-bottom border-2 border-white position-static position-fixed top-1 start-0 w-100">
+        <div className="bg-dark text-white d-flex align-items-center py-1 px-4 border-bottom border-2 border-white position-static position-fixed top-1 start-0 w-100  top-0">
             <div className="d-flex justify-content-center gap-5 flex-grow-1">
                 <Link to="/" className="font-times">
                     Home
                 </Link>
+                <Link to="/store" className="font-times">
+                    Store
+                </Link>
                 <Link to="/about" className="font-times">
                     About
                 </Link>
-                <Link to="/store" className="font-times">
-                    Store
+                <Link to="/contact-us" className="font-times">
+                    Contact Us
                 </Link>
             </div>
             <button
