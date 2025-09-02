@@ -28,3 +28,13 @@
     text-align: center;
     font-size: 17px;
 }
+
+.active {
+    color:aqua;
+    text-decoration: underline;
+}
+
+.active:hover {
+  color: lightblue;  
+  text-decoration: none;
+}
