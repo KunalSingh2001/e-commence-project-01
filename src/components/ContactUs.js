@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ContactUs.css";
 import Header from "./elements/Header";
 function ContactUs() {
@@ -7,11 +7,24 @@ function ContactUs() {
     const [phone, setPhone] = useState('');
 
 
-    const saveContactUs = (event) => {
+    const saveContactUs = async (event) => {
         event.preventDefault();
-        // fetch("https://crudcrud.com/api/1c25efd687734b2c84250fa55f21337a/contact", {
+        const data = {
+            name: name,
+            email: email,
+            phone: phone
+        };
 
-        // })
+        const response = await fetch("https://e-commerce-project-01-98d08-default-rtdb.firebaseio.com/contact.json", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const responseData = await response.json();
+        console.log(responseData)
     }
 
     return (
