@@ -1,19 +1,28 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./Store.css";
 import { CartItemContext } from "./Context/CartItemContext";
 import { Link } from "react-router-dom";
 
 function Store(props) {
-    const {setCartItems, cartItems} = useContext(CartItemContext);
-    function addToCart(id) {
-
+    const { setCartItems, cartItems, addToCart } = useContext(CartItemContext);
+    function addinToCart(id) {
+        const userEmail = localStorage.getItem('email')
         let checkAlreadyExits = cartItems.find((item) => item.id === id);
+        let addedItem = props.products.find((item) => item.id === id);
+        const data = {
+            ...addedItem,
+            email: userEmail,
+            quantity: 1
+        };
+        addToCart(data);
         if (checkAlreadyExits) {
-                setCartItems((prev) =>
-                     prev.map((item) => item.id === id? {...item, quantity: item.quantity + 1} : item))
+                setCartItems((prev) =>prev.map((item) => item.id === id? {...item, quantity: item.quantity + 1} : item));
+
+
+
         }else {
-            let addedItem = props.products.find((item) => item.id === id);
-            setCartItems((prev) => [...prev, addedItem])
+            setCartItems((prev) => [...prev, addedItem]);
+            
         }
     }
 
@@ -38,7 +47,7 @@ function Store(props) {
                         </Link>
                         <div className="d-flex gap-5 mt-3">
                             <span className="mb-0">${item.price}</span>
-                            <button onClick={() => addToCart(item.id)}
+                            <button onClick={() => addinToCart(item.id)}
                                 className="btn btn-info"
                                 style={{ color: "white" }}
                             >

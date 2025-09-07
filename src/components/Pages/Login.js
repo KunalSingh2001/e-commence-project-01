@@ -1,12 +1,14 @@
-import React, {useRef} from 'react';
+import React, {useRef, useContext} from 'react';
 import Header from '../elements/Header';
 import Heading from '../Heading';
 import Footer from '../elements/Footer';
 import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 function Login() {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const history = useHistory();
+    const {setLoginHander} = useContext(AuthContext);
     function submitLoginForm(event) {
 		event.preventDefault();
 		const enteredEmail = emailInputRef.current.value;
@@ -26,8 +28,9 @@ function Login() {
 				throw new Error("Authentication failed!")
 			}
 		}).then((data) => {
+            console.log(data);
+            setLoginHander(data)
             history.replace('/store');
-			
 		}).catch((error) => {
 			alert(error)
 		})
