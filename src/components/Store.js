@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import "./Store.css";
 import { CartItemContext } from "./Context/CartItemContext";
+import { Link } from "react-router-dom";
 
 function Store(props) {
     const {setCartItems, cartItems} = useContext(CartItemContext);
@@ -28,11 +29,13 @@ function Store(props) {
                         <span className="image-title fs-3 mb-3">
                             {item.title}
                         </span>
-                        <img
-                            src={item.imageUrl}
-                            alt="image"
-                            style={{ height: "300px", width: "300px" }}
-                        />
+                        <Link to={`/store/${item.id}`}>
+                            <img
+                                src={item.imageUrl}
+                                alt="image"
+                                style={{ height: "300px", width: "300px" }}
+                            />
+                        </Link>
                         <div className="d-flex gap-5 mt-3">
                             <span className="mb-0">${item.price}</span>
                             <button onClick={() => addToCart(item.id)}

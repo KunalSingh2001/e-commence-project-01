@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
 import Header from "./elements/Header";
+import { useHistory } from "react-router-dom";
 function ContactUs() {
+    const history = useHistory();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -24,7 +26,8 @@ function ContactUs() {
         });
 
         const responseData = await response.json();
-        console.log(responseData)
+        console.log(responseData);
+        history.push('/')
     }
 
     return (

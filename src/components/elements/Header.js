@@ -16,6 +16,9 @@ function Header(props) {
                 <NavLink activeClassName="active" to="/about" className="font-times">
                     About
                 </NavLink>
+                <NavLink activeClassName="active" to="/login" className="font-times">
+                    Login
+                </NavLink>
                 <NavLink activeClassName="active" to="/contact-us" className="font-times">
                     Contact Us
                 </NavLink>
